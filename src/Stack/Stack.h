@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef int Data;
+typedef char Data;
 
 typedef struct node{
 	Data data;

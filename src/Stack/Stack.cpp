@@ -1,4 +1,3 @@
-
 #include "Stack.h"
 
 void StackInit(LStack *stack){
@@ -27,8 +26,8 @@ Data StackPop(LStack *stack){
 }
 Data StackPeek(LStack *stack){
 	if(StackEmpty(stack)){
-		printf("Stack Memory Error");	
-		exit(-1);
+		//printf("Stack Memory Error");	
+		return 0;
 	}
 	return stack->head->data;
 	

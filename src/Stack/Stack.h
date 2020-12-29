@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef char Data;
-
+typedef treeNode* Data;
 typedef struct node{
 	Data data;
 	node *next;

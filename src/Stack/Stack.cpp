@@ -27,7 +27,7 @@ Data StackPop(LStack *stack){
 Data StackPeek(LStack *stack){
 	if(StackEmpty(stack)){
 		//printf("Stack Memory Error");	
-		return 0;
+		exit(-1);
 	}
 	return stack->head->data;
 	

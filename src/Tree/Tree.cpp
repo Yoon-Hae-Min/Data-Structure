@@ -2,27 +2,54 @@
 #include <stdlib.h>
 #include "Tree.h"
 
-node *MakeNode(Data data){
-	node * newNode=(node *)malloc(sizeof(node));
+treeNode *MakeNode(BTData data){
+	treeNode * newNode=(treeNode *)malloc(sizeof(treeNode));
 	newNode->data=data;
 	newNode->right=NULL;
 	newNode->left=NULL;
 	return newNode;
 }
-Data GetData(node *tree){
+BTData GetBTData(treeNode *tree){
 	return tree->data;
 }
-node *GetLeftSubNode(node *tree){
+treeNode *GetLeftSubNode(treeNode *tree){
 	return tree->left;
 }
-node *GetRightSubNode(node *tree){
+treeNode *GetRightSubNode(treeNode *tree){
 	return tree->right;
 }
-void ConnectLeftNode(node *tree, node *sub){
+void ConnectLeftNode(treeNode *tree, treeNode *sub){
 	if(GetLeftSubNode(tree)!=NULL) free(tree->left);
 	tree->left=sub;
 }
-void ConnectRightNode(node *tree, node *sub){
+void ConnectRightNode(treeNode *tree, treeNode *sub){
 	if(GetRightSubNode(tree)!=NULL) free(tree->right);
-	tree->left=sub;
+	tree->right=sub;
+}
+
+void PreorderTraversal(treeNode *tree, VisitFuncPtr action){
+	if(tree==NULL){
+		return;
+	}
+	action(tree->data);
+	PreorderTraversal(tree->left,action);
+	PreorderTraversal(tree->right,action);
+}
+
+void InorderTraversal(treeNode *tree, VisitFuncPtr action){
+	if(tree==NULL){
+		return;
+	}
+	InorderTraversal(tree->left,action);
+	action(tree->data);
+	InorderTraversal(tree->right,action);
+	
+}
+void PostorderTraversal(treeNode *tree, VisitFuncPtr action){
+	if(tree==NULL){
+		return;
+	}
+	PostorderTraversal(tree->left,action);
+	PostorderTraversal(tree->right,action);
+	action(tree->data);
 }

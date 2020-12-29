@@ -1,14 +1,20 @@
-typedef int Data;
-typedef struct node{
-	Data data;
-	node *right;
-	node *left;
-}node;
+typedef int BTData;
+typedef void (*VisitFuncPtr)(BTData data);
+typedef struct Tnode{
+	BTData data;
+	Tnode *right;
+	Tnode *left;
+}treeNode;
 
-node *MakeNode(Data data);
-Data GetData(node *tree);
-node *GetLeftSubNode(node *tree);
-node *GetRightSubNode(node *tree);
-void ConnectLeftNode(node *tree, node *sub);
-void ConnectRightNode(node *tree, node *sub);
+treeNode *MakeNode(BTData data);
+BTData GetBTData(treeNode *tree);
+treeNode *GetLeftSubNode(treeNode *tree);
+treeNode *GetRightSubNode(treeNode *tree);
+void ConnectLeftNode(treeNode *tree, treeNode *sub);
+void ConnectRightNode(treeNode *tree, treeNode *sub);
+
+void PreorderTraversal(treeNode *tree, VisitFuncPtr action);
+void InorderTraversal(treeNode *tree, VisitFuncPtr action);
+void PostorderTraversal(treeNode *tree, VisitFuncPtr action);
+
 

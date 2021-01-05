@@ -3,4 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 treeNode *MakeExpTree(char exp[]);
-void EvaluateExpTree(node *et);
+void ShowData(int data);
+int EvaluateExpTree(treeNode *et);
+void ShowPrefixTypeExp(treeNode *tnode);
+void ShowInfixTypeExp(treeNode *tnode);
+void ShowPostfixTypeExp(treeNode *tnode);

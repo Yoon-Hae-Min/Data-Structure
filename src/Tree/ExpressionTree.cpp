@@ -28,8 +28,41 @@ void ShowPrefixTypeExp(treeNode *tnode){
 	 PreorderTraversal(tnode,ShowData);
 }
 void ShowInfixTypeExp(treeNode *tnode){
-	 InorderTraversal(tnode,ShowData);
+	if(tnode==NULL) return;
+	
+	if(tnode->left!=NULL||tnode->right!=NULL){
+		
+		printf("(");
+	}
+		
+	ShowInfixTypeExp(tnode->left);
+	ShowData(tnode->data);
+	ShowInfixTypeExp(tnode->right);
+	if(tnode->left!=NULL||tnode->right!=NULL){
+	printf(")");}
 }
 void ShowPostfixTypeExp(treeNode *tnode){
 	 PostorderTraversal(tnode,ShowData);
+}
+
+int EvaluateExpTree(treeNode *et){
+	int op1,op2;
+	if(GetLeftSubNode(et)==NULL && GetRightSubNode(et)==NULL){
+		return GetBTData(et);
+	}
+	op1=EvaluateExpTree(GetLeftSubNode(et));
+	op2=EvaluateExpTree(GetRightSubNode(et));
+
+
+	switch(GetBTData(et)){
+		case '+':
+			return op1+op2;
+		case '-':
+			return op1-op2;
+		case '*':
+			return op1*op2;
+		case '/':
+			return op1/op2;
+	}
+	return 0;
 }

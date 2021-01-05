@@ -9,4 +9,7 @@ int main(){
 	ShowInfixTypeExp(exptree);
 	printf("\n");
 	ShowPostfixTypeExp(exptree);
+	printf("\n");
+	
+	printf("%d ",EvaluateExpTree(exptree));
 }

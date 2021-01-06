@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define HEAP_LEN 10
-typedef char heapData;
+typedef int heapData;
 typedef int (*PriorityCmp)(int p1, int p2);
 
 typedef struct Heap_Element{

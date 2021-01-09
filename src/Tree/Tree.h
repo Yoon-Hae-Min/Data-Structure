@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Tree.h"
 
 typedef int BTData;
 typedef void (*VisitFuncPtr)(BTData data);

@@ -20,6 +20,9 @@ void PreorderTraversal(treeNode *tree, VisitFuncPtr action);
 void InorderTraversal(treeNode *tree, VisitFuncPtr action);
 void PostorderTraversal(treeNode *tree, VisitFuncPtr action);
 
+treeNode *RemoveRightSubTree(treeNode *tree);
+treeNode *RemoveLeftSubTree(treeNode *tree);
+
 treeNode *MakeNode(BTData data){
 	treeNode * newNode=(treeNode *)malloc(sizeof(treeNode));
 	newNode->data=data;
@@ -72,3 +75,19 @@ void PostorderTraversal(treeNode *tree, VisitFuncPtr action){
 	action(tree->data);
 }
 
+treeNode *RemoveRightSubTree(treeNode *tree){
+	treeNode *deleteTree;
+	if(tree!=NULL){
+		deleteTree=tree->right;
+		tree->right=NULL;
+	}
+	return deleteTree;
+}
+treeNode *RemoveLeftSubTree(treeNode *tree){
+	treeNode *deleteTree;
+	if(tree!=NULL){
+		deleteTree=tree->left;
+		tree->left=NULL;
+	}
+	return deleteTree;
+}

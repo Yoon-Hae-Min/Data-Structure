@@ -26,6 +26,7 @@ int main(){
 	else{
 		printf("성공\n");
 	}
-	
+	BinarySearchTreeRemove(&roottree, 9);
+	BinarySearchTreeRemove(&roottree, 2);
 	PreorderTraversal(roottree, print);
 }

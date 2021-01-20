@@ -1,4 +1,4 @@
-#include "BinarySearchTree.h"
+#include "AVLBinarySearchTree.h"
 
 void print(int data){
 	printf("%d ",data);

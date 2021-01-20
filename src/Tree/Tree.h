@@ -3,6 +3,7 @@
 
 typedef int BTData;
 typedef void (*VisitFuncPtr)(BTData data);
+
 typedef struct Tnode{
 	BTData data;
 	Tnode *right;
@@ -34,9 +35,11 @@ BTData GetBTData(treeNode *tree){
 	return tree->data;
 }
 treeNode *GetLeftSubNode(treeNode *tree){
+	if(tree==NULL) return NULL;
 	return tree->left;
 }
 treeNode *GetRightSubNode(treeNode *tree){
+	if(tree==NULL) return NULL;
 	return tree->right;
 }
 void ConnectLeftNode(treeNode *tree, treeNode *sub){
@@ -90,4 +93,11 @@ treeNode *RemoveLeftSubTree(treeNode *tree){
 		tree->left=NULL;
 	}
 	return deleteTree;
+}
+
+void ChangeLeftSubTree(treeNode *parent,treeNode *target){
+	parent->left=target;
+}
+void ChangeRightSubTree(treeNode *parent,treeNode *target){
+	parent->right=target;
 }

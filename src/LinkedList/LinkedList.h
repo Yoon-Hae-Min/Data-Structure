@@ -2,15 +2,16 @@
 #include <stdlib.h>
 
 typedef int LData;
-typedef struct node{
+typedef struct lnode{
 	LData data;
-	node *next;
-}Node;
+	lnode *next;
+}LNode;
 
 typedef struct LinkedList{
-	Node *head;
-	Node *last;
-	Node *before;
+	LNode *head;
+	LNode *last;
+	LNode *before;
+	LNode *cur;
 	int numOfData;
 	int (*cmp)(LData D1,LData D2);
 }LinkedList;
@@ -19,7 +20,7 @@ void ListInit(LinkedList *list);
 void Linsert(LinkedList *list, LData data);
 void Sinsert(LinkedList *list, LData data);
 void Finsert(LinkedList *list, LData data);
-Node* LMakeNode(LData data);
+LNode* LMakeNode(LData data);
 LData LRemove(LinkedList *list);
 int  LCount(LinkedList *list);
 int Lnext(LinkedList *list, LData *pdata);

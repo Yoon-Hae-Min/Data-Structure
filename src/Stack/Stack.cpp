@@ -10,7 +10,7 @@ int StackEmpty(LStack *stack){
 }
 
 Data StackPop(LStack *stack){
-	Node *pstack;
+	SNode *pstack;
 	Data sdata;
 	if(StackEmpty(stack)){
 		printf("Stack Memory Error");	
@@ -33,7 +33,7 @@ Data StackPeek(LStack *stack){
 	
 }
 void StackPush(LStack *stack, Data data){
-	Node *NewNode=(node*)malloc(sizeof(node));
+	SNode *NewNode=(node*)malloc(sizeof(node));
 	NewNode->data=data;
 	NewNode->next=stack->head;
 	stack->head=NewNode;

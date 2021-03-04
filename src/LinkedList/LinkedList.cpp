@@ -1,11 +1,24 @@
 #include "LinkedList.h"
 
+int Lnext(LinkedList *list, LData *pdata){
+	if(list->cur==NULL){
+		return 0;
+	}
+	else{
+		*pdata=list->cur->data;
+		list->cur=list->cur->next;
+		return 1;
+	}
+	
+}
+
 void ListInit(LinkedList *list){
 	list->head=NULL;
 	list->last=NULL;
 	list->before=NULL;
 	list->cmp=NULL;
 	list->numOfData=0;
+	list->cur=NULL;
 }
 
 void Linsert(LinkedList *list, LData data){
@@ -17,11 +30,12 @@ void Linsert(LinkedList *list, LData data){
 	}
 }
 void Finsert(LinkedList *list, LData data){
-	Node *NewNode=LMakeNode(data);
+	LNode *NewNode=LMakeNode(data);
 	if(list->head==NULL){
 		list->head=NewNode;
 		list->last=NewNode;
 		list->before=list->head;
+		list->cur=list->head;
 	}
 	else{
 		list->last->next=NewNode;
@@ -29,10 +43,11 @@ void Finsert(LinkedList *list, LData data){
 	}
 }
 void Sinsert(LinkedList *list, LData data){
-	Node *NewNode=LMakeNode(data);
-	Node *pNode=list->head;
+	LNode *NewNode=LMakeNode(data);
+	LNode *pNode=list->head;
 	if(pNode==NULL){
 		list->head=NewNode;
+		list->cur=list->head;
 	}
 	else{
 		while(pNode->next!=NULL && list->cmp(data,pNode->next->data)){
@@ -46,15 +61,15 @@ void Sinsert(LinkedList *list, LData data){
 	}
 }
 
-Node* LMakeNode(LData data){
-	Node *NewNode=(Node*)malloc(sizeof(Node));
+LNode* LMakeNode(LData data){
+	LNode *NewNode=(LNode*)malloc(sizeof(LNode));
 	NewNode->data=data;
 	NewNode->next=NULL;
 	return NewNode;
 }
 LData LRemove(LinkedList *list){
-	Node *h=list->head;
-	Node *RNode=list->last;
+	LNode *h=list->head;
+	LNode *RNode=list->last;
 	LData RData=RNode->data;
 	
 	while(h->next->next!=NULL){
@@ -70,7 +85,7 @@ LData LRemove(LinkedList *list){
 
 int  LCount(LinkedList *list){
 	int cnt=0;
-	Node *firstNode=list->head;
+	LNode *firstNode=list->head;
 	while(firstNode->next!=NULL){
 		firstNode=firstNode->next;
 		cnt++;
@@ -78,7 +93,7 @@ int  LCount(LinkedList *list){
 	return cnt;
 }
 void LPrint(LinkedList *list){
-	Node *num=list->head;
+	LNode *num=list->head;
 	while(num!=NULL){
 		if(num->next==NULL){
 			printf("%d",num->data);
